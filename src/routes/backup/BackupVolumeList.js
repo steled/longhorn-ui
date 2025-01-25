@@ -84,7 +84,7 @@ class List extends React.Component {
     if (e.key === 'recovery') {
       this.props.Create(record)
     } else if (e.key === 'deleteAll') {
-      this.props.DeleteAllBackups(record)
+      this.props.deleteAllBackups(record)
     } else if (e.key === 'restoreLatestBackup') {
       this.props.restoreLatestBackup(record)
     } else if (e.key === 'syncBackupVolume') {
@@ -117,7 +117,6 @@ class List extends React.Component {
                     search: queryString.stringify({
                       field: 'name',
                       keyword: record.name,
-                      volumeName: record.volumeName
                     }),
                   }}>
                   {id}
@@ -290,9 +289,8 @@ class List extends React.Component {
     })
 
     return (
-      <div id="backTable" style={{ overflow: 'hidden', flex: 1 }}>
+      <div id="backTable">
         <Table
-          className="common-table-class"
           rowSelection={rowSelection}
           locale={locale}
           bordered={false}
@@ -326,7 +324,7 @@ List.propTypes = {
   onSorterChange: PropTypes.func,
   Create: PropTypes.func,
   onRowClick: PropTypes.func,
-  DeleteAllBackups: PropTypes.func,
+  deleteAllBackups: PropTypes.func,
   dispatch: PropTypes.func,
   restoreLatestBackup: PropTypes.func,
   syncBackupVolume: PropTypes.func,
